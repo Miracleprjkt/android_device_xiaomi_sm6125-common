@@ -67,6 +67,9 @@ BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sm6125
 TARGET_KERNEL_CONFIG := vendor/trinket-perf_defconfig vendor/xiaomi-trinket.config
 
+# Miui Camera
+TARGET_USES_MIUI_CAMERA := true
+
 # Media
 TARGET_USES_ION := true
 
