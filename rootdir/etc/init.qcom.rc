@@ -821,7 +821,6 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     user system
     group system
     disabled
-    
 
 # Set zramswap for performanceAdd commentMore actions
 service zramswap /system/bin/swapon /dev/block/zram0
@@ -837,3 +836,13 @@ on boot
     # Optimize I/O scheduler
     write /sys/block/mmcblk0/queue/scheduler "bfq"
     write /sys/block/mmcblk1/queue/scheduler "bfq"
+
+service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    socket pps stream 0660 system system
+    task_profiles ProcessCapacityHigh HighPerformance
